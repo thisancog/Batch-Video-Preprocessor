@@ -16,7 +16,7 @@ What it doesn't do:
 
 ## Prerequisites
 
-A MacO or Linux system is required to run the Shell script. For Windows support, you will need to prepare your system to run these files first.
+A MacOS or Linux system is required to run the Shell script. For Windows support, you will need to prepare your system to run these files first.
 
 You also need to install [ffmpeg](https://ffmpeg.org/), if it is not already present on your computer (which likely is the case).
 
