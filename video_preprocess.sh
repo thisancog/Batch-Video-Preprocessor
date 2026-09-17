@@ -19,8 +19,8 @@
 #     larger is scaled down preserving aspect ratio; anything smaller is
 #     left at its native resolution (never upscaled). Portrait video is
 #     handled correctly -- the cap applies to whichever side is longer.
-#   - Audio streams are copied bit-for-bit (-c:a copy), so no audio
-#     quality is lost and every audio track is preserved.
+#   - Audio streams are transcoded to AAC (all tracks preserved, just
+#     re-encoded). Adjust AUDIO_BITRATE below to change audio quality.
 #   - If the source is already an .mp4 and the re-encoded result turns
 #     out LARGER than the original, the re-encode is discarded and the
 #     original file is copied verbatim to the web_ name instead.
@@ -37,6 +37,7 @@ PRESET="slow"      # slower presets = better compression at same quality
 PREFIX="web_"
 MAX_W=3840         # maximum output width  (4K UHD)
 MAX_H=2160         # maximum output height (4K UHD)
+AUDIO_BITRATE="192k"  # AAC bitrate per audio track
 EXTENSIONS=("mp4" "mov" "mkv" "avi" "webm" "flv" "wmv" "m4v" "mpg" "mpeg" "ts")
 # ---------------------------------------------------------------------
 
@@ -123,7 +124,7 @@ while IFS= read -r -d '' file; do
         -map "0:v:0" -map "0:a?" \
         -vf "scale='min(${MAX_W},iw)':'min(${MAX_H},ih)':force_original_aspect_ratio=decrease:force_divisible_by=2" \
         -c:v libx264 -preset "$PRESET" -crf "$CRF" -pix_fmt yuv420p \
-        -c:a copy \
+        -c:a aac -b:a "$AUDIO_BITRATE" \
         -movflags +faststart \
         "$outfile"
     then
