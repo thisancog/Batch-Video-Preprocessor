@@ -15,7 +15,7 @@
 # Notes:
 #   - Video is re-encoded with libx264 at CRF 18 (visually lossless).
 #     For mathematically lossless output set CRF=0 (much larger files).
-#   - Output is capped at MAX_W x MAX_H (3840x2160 by default). Anything
+#   - Output is capped at MAX_W x MAX_H (2560x1440 by default). Anything
 #     larger is scaled down preserving aspect ratio; anything smaller is
 #     left at its native resolution (never upscaled). Portrait video is
 #     handled correctly -- the cap applies to whichever side is longer.
@@ -35,8 +35,8 @@ set -euo pipefail
 CRF=18             # 0 = lossless, 18 = visually lossless, lower = better
 PRESET="slow"      # slower presets = better compression at same quality
 PREFIX="web_"
-MAX_W=3840         # maximum output width  (4K UHD)
-MAX_H=2160         # maximum output height (4K UHD)
+MAX_W=2560         # maximum output width  (1440p QHD)
+MAX_H=1440         # maximum output height (1440p QHD)
 AUDIO_BITRATE="192k"  # AAC bitrate per audio track
 EXTENSIONS=("mp4" "mov" "mkv" "avi" "webm" "flv" "wmv" "m4v" "mpg" "mpeg" "ts")
 # ---------------------------------------------------------------------

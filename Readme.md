@@ -6,7 +6,7 @@ What it does:
 
  - read all video files – .mp4, .mov, .mkv, .avi, .webm, .flv, .wmv, .m4v, .mpg, .mpeg, .ts – in a given directory
  - converts each into .mp4 files with the H.264 video codec at a CRF quality factor of 18 (visually lossless) and the AAC audio codec at a birate of 192k
- - caps output dimensions to 3840 x 2160 pixels (16:9 4K)
+ - caps output dimensions to 2560 x 1440 pixels (16:9 QHD)
  - save each file in the same directory with the same filename and the "web_" prefix
 
 What it doesn't do:
